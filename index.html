@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MazeMind — Pac-Man AI Lab</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon">◕</span><div><strong>MAZEMIND</strong><small>PAC-MAN AI LAB</small></div></div>
+      <span class="tag"><span class="live-dot"></span> PATHFINDING AGENT · V1.0</span>
+    </header>
+    <section class="intro"><div class="eyebrow">AUTONOMOUS GAME AGENT <span> / </span> EXPERIMENT 001</div>
+      <h1>Watch an AI <em>think</em><br>its way through the maze.</h1>
+      <p>A playable, procedural Pac-Man-style game. Watch a reinforcement-learning agent trained on thousands of mazes, then compare it with a hand-built pathfinding baseline.</p>
+    </section>
+    <section class="dashboard">
+      <div class="game-panel">
+        <div class="panel-header"><div><span class="indicator"></span><b>LIVE SIMULATION</b></div><span id="seed-label">MAZE #1</span></div>
+        <div class="board-frame"><canvas id="board" aria-label="Pac-Man maze"></canvas><div class="overlay" id="overlay" hidden><b id="overlay-title"></b><span id="overlay-subtitle"></span><button id="again">NEW MAZE →</button></div></div>
+        <div class="controls"><label class="speed">AGENT <select id="agent"><option value="rl">Q-learning (trained)</option><option value="route">Route + safety (untrained)</option><option value="planner">Pathfinding baseline</option></select></label><button id="toggle" class="primary">▶ &nbsp; Start AI</button><button id="manual">⌨ &nbsp; Play myself</button><button id="reset">↻ &nbsp; New maze</button><label class="speed">SPEED <select id="speed"><option value="170">1×</option><option value="85" selected>2×</option><option value="34">5×</option><option value="10">FAST</option></select></label></div>
+        <div class="hint">Manual controls: arrow keys or WASD <span>·</span> Space to pause/resume AI</div>
+      </div>
+      <aside class="sidebar">
+        <div class="card stats"><div class="card-label">RUN METRICS <span>01 / 03</span></div><div class="stat-row"><div><small>SCORE</small><strong id="score">0</strong></div><div><small>PELLETS LEFT</small><strong id="pellets">0</strong></div></div><div class="progress-label"><span>MAZE COMPLETION</span><span id="percentage">0%</span></div><div class="progress"><i id="progress-bar"></i></div><div class="stat-footer"><span>LIVES <b id="lives">● ● ●</b></span><span>STEPS <b id="ticks">0</b></span></div></div>
+        <div class="card reasoning"><div class="card-label">AGENT INTELLIGENCE <span>02 / 03</span></div><div class="brain">✳</div><strong id="state-heading">Ready to explore</strong><p id="state-text">Select a trained Q-learning agent or the pathfinding baseline, then press Start AI.</p><div class="logic-row"><span class="logic-icon">⌁</span><div><b>LEARNED Q-VALUES</b><small>Trained by trial and error</small></div></div><div class="logic-row"><span class="logic-icon">◇</span><div><b>GHOST AWARENESS</b><small>Observes nearest threat</small></div></div><div class="logic-row"><span class="logic-icon">✦</span><div><b>REWARD SIGNAL</b><small>Pellets, survival &amp; wins</small></div></div></div>
+        <div class="card event-card"><div class="card-label">ACTIVITY LOG <span>03 / 03</span></div><div id="events" class="events"><div class="event"><span>00:00</span> Maze generated. Agent ready.</div></div></div>
+      </aside>
+    </section>
+    <footer>BUILT TO LEARN, NOT TO CHEAT <span>·</span> SEE README FOR BENCHMARKS AND ALGORITHM</footer>
+  </main>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
